@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Broward Villas</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <style>
+        nav ul li a {
+            color: white;
+            text-decoration:underline;
+        }
+    </style>
+    <body>
+        <video autoplay muted loop id="background-video">
+            <source src="videos/1106882399-preview.mp4" type="video/mp4">
+        </video>
+        <!-- Header Section -->
+        <header>
+            <h1>Broward Villas</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- About Section -->
+        <section id="about us" class="section bg-image">
+            <div class="overlay">
+                <h2>About Broward Villas</h2>
+                <p>Welcome to the Broward Villas paradise luxury experience!</p>
+                <p> Nestle in the pristine estate of Broward county, our villa offers a wide variety of different activities that are family friendly and even something for the couples.</p>
+
+            </div>
+        </section>
+
+        <!--Testimonials section-->
+        <section id="testimonials" class="section">
+            <h2>Testimonials</h2>
+            <div class="testimonial">
+                <p>"I must say that this villa was the most luxurious experience I've had in a long time. The staff, the ambiance, the servers were all freindly and open to help us with anything we needed. CAN'T WAIT TO COME BACK NEXT YEAR!"</p>
+                <P class="author">- Elizabeth and Andrew</P>
+            </div>
+            <div class="testimonial">
+                <p>"10/10 would reccomend to anyone, especially if you need a short escape from reality."</p>
+                <p class="author">-Michael</p>
+            </div>
+        </section>
+
+        <section id="offers" class="section">
+            <h2>Offers</h2>
+            <div class="offer">
+                <img src="images/villafamily.jpg" alt="Family villa style="width:60%>
+                <h3>Family Offer</h3>
+                <p>For the family thats looking to have a good time together, we offer a 50% discount on the entire villa as long as you book a week stay or more!</p>
+                <p>All you have to do is use a promo code "Fall2024" when booking!</p>
+            </div>
+            <div class="offer">
+                <img src="images/couple1.jpg" alt="couple villa" style="width:60%">
+                <h3>Villa Price</h3>
+                <p>$200 per day for a family of 4</p>
+                <p>$100 additiional for any additional person.</p>
+            </div>
+        </section>
+        <!-- Gallery Section with Slideshow -->
+        <section id="gallery" class="section">
+            <h2>Gallery</h2>
+            <div class="image-gallery">
+                <div class="image-container left">
+                <img id="slide" src="images/paradise1.png" alt="Villa image 1" style="width:100%; max-width:600px;">
+                </div>
+                <div class="image-container right">
+                <img id="slide2" src="images/paradise2.jpg" alt="Villa image 2" style="width:100%; max-width:600px;">
+                </div>
+                <div class="image-container left">
+                <img id="slide3" src="images/paradise3.jpg" alt="Villa image 3" style="width:100%; max-width:600px;">
+                </div>
+                <div class="image-container right">
+                <img id="slide4" src="images/paradise4.jpg" alt="Villa image 4" style="width:100%; max-width:600px;">
+                </div>
+            
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, please feel free to contact us!</p>
+            <form id="contactForm" onsubmit="return validateForm()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email"><br><br>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+            <p id="error-msg" style="color: red;"></p>
+        </section>
+        
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 Broward Villas</p>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script>
+            // Smooth Scroll for Navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Slideshow Functionality
+            const images = [
+                'images/paradise1.png',
+                'images/paradise2.jpg',
+                'images/paradise3.png',
+            ];
+            let currentSlide = 0;
+
+            function changeSlide(direction) {
+                const slide = document.getElementById('slide');
+                slide.style.opacity = 0;
+                setTimeout(() => {
+                    slide.style.opacity=1;
+                
+                }
+            
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % images.length;
+                document.getElementById('slide').src = images[currentSlide];
+                
+                }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + images.length) % images.length;
+                document.getElementById('slide').src = images[currentSlide];
+            }
+
+            // Form Validation
+            function validateForm() {
+                let name = document.getElementById('name').value;
+                let email = document.getElementById('email').value;
+                let message = document.getElementById('message').value;
+                let errorMsg = document.getElementById('error-msg');
+
+                if (name === "" || email === "" || message === "") {
+                    errorMsg.textContent = "Please fill in all fields.";
+                    return false;
+                }
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    errorMsg.textContent = "Please enter a valid email address.";
+                    return false;
+                }
+
+                errorMsg.textContent = "";
+                return true;
+            }
+        </script>
+    </body>
+</html>
